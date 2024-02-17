@@ -43,7 +43,7 @@ char *read_input_file(char *name) {
 int main(int argc, char *argv[]) {
     char *input_file = read_input_file(argv[1]);
 
-    struct ini_file ini = {.items = NULL, .count = 0, .capacity = 0};
+    struct ini_file ini = {0};
     ini_parse(&ini, input_file);
 
     for (unsigned int i = 0; i < ini.count; i++) {
@@ -65,6 +65,10 @@ int main(int argc, char *argv[]) {
 
     char *port = ini_get_value(&ini, "database", "port");
     printf("The port is: %s\n", port);
+    free(port);
+
+    ini_free(&ini);
+    free(input_file);
 
     return 0;
 }
