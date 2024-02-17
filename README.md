@@ -17,6 +17,9 @@ void main() {
 
     char *value = ini_get_value(&ini, "section", "key"); // Access value using section and key
     printf("The value is: %s\n", value);
+    free(value)
+
+    ini_free(&ini);
 }
 ```
 
